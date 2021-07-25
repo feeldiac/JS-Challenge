@@ -208,6 +208,7 @@ ul:hover {
 
 .carousel::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px transparent;
+  box-shadow: inset 0 0 6px transparent;
 }
 
 .carousel::-webkit-scrollbar-thumb {
