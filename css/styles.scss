@@ -1,28 +1,22 @@
+//colors
+
 $color-white: white;
+$color-purple: #8f5efd;
+
+//Font
+
+$ff-1: 'Mulish', sans-serif;
+$fs-title: 25px;
+$fs-input-cat: 16px;
+$fs-footer: 14px;
+$fs-car-details: 10px;
 
 body {
   margin: 0;
-  background-color: #8f5efd;
+  background-color: $color-purple;
   overflow-x: hidden;
-  font-family: 'Mulish', sans-serif;
+  font-family: $ff-1;
 }
-// Ejemplo de uso @extend **
-
-// .flex {
-//   display: flex;
-//   align-items: center;
-// }
-
-// .header {
-//   width: 100%;
-//   height: 80px;
-//   @extend .flex;
-//   // display: flex;
-//   justify-content: space-between;
-//   // align-items: center;
-// }
-
-// Ejemplo de uso @mixin
 
 @mixin flex {
   display: flex;
@@ -33,9 +27,7 @@ body {
   width: 100%;
   height: 80px;
   @include flex;
-  // display: flex;
   justify-content: space-between;
-  // align-items: center;
 }
 
 .header__logo {
@@ -46,16 +38,29 @@ body {
 
 .header__menu {
   margin-right: 30px;
-}
 
-.header__menu ul {
-  display: none;
-  list-style: none;
-  padding: 0;
-  position: absolute;
-  width: 100px;
-  text-align: right;
-  margin: 0 0 0 -14px;
+  ul {
+    display: none;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    width: 100px;
+    text-align: right;
+    margin: 0 0 0 -14px;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        color: $color-white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .header__menu:hover ul,
@@ -63,52 +68,37 @@ ul:hover {
   display: block;
 }
 
-.header__menu li {
-  margin: 10px 0;
-
-  a {
-    color: $color-white;
-    text-decoration: none;
-  }
-}
-
-.header__menu li a:hover {
-  text-decoration: underline;
-}
-
 .header__menu--profile {
   margin-right: 8px;
-  display: flex;
-  align-items: center;
+  @include flex;
   cursor: pointer;
-}
 
-.header__menu--profile img {
-  margin-right: 8px;
-  width: 40px;
-}
+  img {
+    margin-right: 8px;
+    width: 40px;
+  }
 
-.header__menu--profile p {
-  margin: 0;
-  color: white;
+  p {
+    margin: 0;
+    color: $color-white;
+  }
 }
 
 .main {
   height: 300px;
-  display: flex;
+  @include flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .main__title {
-  color: white;
-  font-size: 25px;
+  color: $color-white;
+  font-size: $fs-title;
 }
 
 .categories__title {
-  color: white;
-  font-size: 16px;
+  color: $color-white;
+  font-size: $fs-input-cat;
   position: absolute;
   padding-left: 30px;
   width: 100%;
@@ -116,11 +106,11 @@ ul:hover {
 
 .input {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
+  border: 2px solid $color-white;
   border-radius: 25px;
-  color: white;
-  font-family: 'Mulish', sans-serif;
-  font-size: 16px;
+  color: $color-white;
+  font-family: $ff-1;
+  font-size: $fs-input-cat;
   height: 50px;
   padding: 0 20px;
   width: 70%;
@@ -132,12 +122,12 @@ ul:hover {
 }
 
 .input::placeholder {
-  color: white;
+  color: $color-white;
 }
 
 .input:focus-visible {
   outline: none;
-  border: 2px dashed white;
+  border: 2px dashed $color-white;
   border-radius: 50px;
 }
 
@@ -173,13 +163,15 @@ ul:hover {
   transform: translate3d(100px, 0, 0);
 }
 
-.carousel__container:hover .carousel-item {
-  opacity: 0.3;
-}
+.carousel__container:hover {
+  .carousel-item {
+    opacity: 0.3;
+  }
 
-.carousel__container:hover .carousel-item:hover {
-  transform: scale(1.5);
-  opacity: 1;
+  .carousel-item:hover {
+    transform: scale(1.5);
+    opacity: 1;
+  }
 }
 
 .carousel-item__img {
@@ -194,7 +186,7 @@ ul:hover {
     rgba(0, 0, 0, 0.9) 0%,
     rgba(0, 0, 0, 0) 100%
   );
-  font-size: 10px;
+  font-size: $fs-car-details;
   opacity: 0;
   transition: 450ms opacity;
   padding: 10px;
@@ -207,20 +199,22 @@ ul:hover {
   flex-direction: column;
   justify-content: flex-end;
   gap: 4px;
+
+  div {
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
 
 .carousel-item__details:hover {
   opacity: 1;
 }
 
-.carousel-item__details div img {
-  width: 25px;
-  height: 25px;
-}
-
 .carousel-item__details--title,
 .carousel-item__details--subtitle {
-  color: white;
+  color: $color-white;
   margin: 0;
 }
 
@@ -252,21 +246,20 @@ ul:hover {
 }
 
 .footer {
-  display: flex;
-  align-items: center;
+  @include flex;
   height: 100px;
   width: 100%;
-  background-color: #8f5efd;
-}
+  background-color: $color-purple;
 
-.footer a {
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  padding-left: 30px;
-  text-decoration: none;
-}
+  a {
+    color: $color-white;
+    cursor: pointer;
+    font-size: $fs-footer;
+    padding-left: 30px;
+    text-decoration: none;
+  }
 
-.footer a:hover {
-  text-decoration: underline;
+  a:hover {
+    text-decoration: underline;
+  }
 }

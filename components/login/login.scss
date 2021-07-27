@@ -1,16 +1,25 @@
+$ff-1: 'Mulish', sans-serif;
+$color-white: white;
+$color-green: #21c08b;
+$color-purple: #ab88ff;
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
 body {
   margin: 0;
-  font-family: 'Mulish', sans-serif;
+  font-family: $ff-1;
 }
 
 .header {
   width: 100%;
   height: 100px;
-  display: flex;
+  @include flex;
   justify-content: space-between;
-  align-items: center;
-  color: white;
-  background-color: #21c08b;
+  color: $color-white;
+  background-color: $color-green;
 }
 
 .header__logo {
@@ -20,9 +29,8 @@ body {
 }
 
 .login {
-  background-image: linear-gradient(#21c08b, #ab88ff);
-  display: flex;
-  align-items: center;
+  background-image: linear-gradient($color-green, $color-purple);
+  @include flex;
   justify-content: center;
   flex-direction: column;
   padding: 0 30px;
@@ -31,9 +39,9 @@ body {
 
 .login__container {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
+  border: 2px solid $color-white;
   border-radius: 40px;
-  color: white;
+  color: $color-white;
   padding: 60px 68px 40px;
   min-height: 700px;
   width: 300px;
@@ -45,55 +53,56 @@ body {
 .login__container--form {
   display: flex;
   flex-direction: column;
-}
 
-.login__container--form label {
-  font-size: 14px;
+  label {
+    font-size: 14px;
+  }
 }
 
 .login__container--remember-me {
-  color: white;
+  color: $color-white;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+
+  a {
+    color: $color-white;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
-.login__container--remember-me a {
-  color: white;
-  font-size: 14px;
-  text-decoration: none;
-}
+.login__container--social-media {
+  div {
+    @include flex;
+    font-size: 14px;
+    margin-bottom: 10px;
+    gap: 10px;
 
-.login__container--remember-me a:hover {
-  text-decoration: underline;
-}
-
-.login__container--social-media > div {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.login__container--social-media > div > img {
-  width: 30px;
-  height: 30px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 .login__container--register {
   font-size: 14px;
-}
 
-.login__container--register a {
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    color: $color-white;
+    text-decoration: none;
+  }
 
-.login__container--register a:hover {
-  text-decoration: underline;
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .input {
@@ -101,10 +110,10 @@ body {
   border-left: 0;
   border-top: 0;
   border-right: 0;
-  border-bottom: 2px solid white;
-  font-family: 'Mulish', sans-serif;
+  border-bottom: 2px solid $color-white;
+  font-family: $ff-1;
   font-size: 16px;
-  color: white;
+  color: $color-white;
   margin-bottom: 20px;
   padding: 0 20px;
   outline: none;
@@ -112,41 +121,40 @@ body {
 }
 
 ::placeholder {
-  color: white;
+  color: $color-white;
 }
 
 .button {
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: $color-white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  font-family: 'Mulish', sans-serif;
+  font-family: $ff-1;
   height: 50px;
   letter-spacing: 1px;
   margin: 10px 0;
 }
 
 .footer {
-  display: flex;
-  align-items: center;
+  @include flex;
   height: 100px;
   width: 100%;
-  background-color: #ab88ff;
-}
+  background-color: $color-purple;
 
-.footer a {
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  padding-left: 30px;
-  text-decoration: none;
-}
+  a {
+    color: $color-white;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+  }
 
-.footer a:hover {
-  text-decoration: underline;
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 @media only screen and (max-width: 600px) {
